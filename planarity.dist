@@ -1,0 +1,69 @@
+#Planarity Restraint: 1->7->13->19
+# 1-7
+#  planaritets restraint:  N9 N7 N1 N3
+ &rst iat=1,1,7,7, atnam(1)='N9', atnam(2)='N7',
+     atnam(3)='N1', atnam(4)='N3',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+     rk2=20.0, rk3=20.0, nstep1=0, nstep2=180000, iresid=1, &end
+
+#  planaritets restraint:  C5 C2 N7 C4
+ &rst iat=1,1,7,7, atnam(1)='C5', atnam(2)='C2',
+     atnam(3)='N7', atnam(4)='C4',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0, iresid=1, &end
+
+#  planaritets restraint:  C2 C8 C2 C8
+ &rst iat=1,1,7,7, atnam(1)='C2', atnam(2)='C8',
+     atnam(3)='C2', atnam(4)='C8',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+      iresid=1, &end
+# 19->1
+#  planaritets restraint:  N9 N7 N1 N3
+ &rst iat=19,19,1,1, atnam(1)='N9', atnam(2)='N7',
+     atnam(3)='N1', atnam(4)='N3',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+     rk2=20.0, rk3=20.0, nstep1=0, nstep2=180000, iresid=1, &end
+
+#  planaritets restraint:  C5 C2 N7 C4
+ &rst iat=19,19,1,1, atnam(1)='C5', atnam(2)='C2',
+     atnam(3)='N7', atnam(4)='C4',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0, iresid=1, &end
+
+#  planaritets restraint:  C2 C8 C2 C8
+ &rst iat=19,19,1,1, atnam(1)='C2', atnam(2)='C8',
+     atnam(3)='C2', atnam(4)='C8',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+      iresid=1, &end
+# 13->19
+#  planaritets restraint:  N9 N7 N1 N3
+ &rst iat=13,13,19,19, atnam(1)='N9', atnam(2)='N7',
+     atnam(3)='N1', atnam(4)='N3',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+     rk2=20.0, rk3=20.0, nstep1=0, nstep2=180000, iresid=1, &end
+
+#  planaritets restraint:  C5 C2 N7 C4
+ &rst iat=13,13,19,19, atnam(1)='C5', atnam(2)='C2',
+     atnam(3)='N7', atnam(4)='C4',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0, iresid=1, &end
+
+#  planaritets restraint:  C2 C8 C2 C8
+ &rst iat=13,13,19,19, atnam(1)='C2', atnam(2)='C8',
+     atnam(3)='C2', atnam(4)='C8',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+      iresid=1, &end
+# 7->13
+#  planaritets restraint:  N9 N7 N1 N3
+ &rst iat=7,7,13,13, atnam(1)='N9', atnam(2)='N7',
+     atnam(3)='N1', atnam(4)='N3',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+     rk2=20.0, rk3=20.0, nstep1=0, nstep2=180000, iresid=1, &end
+
+#  planaritets restraint:  C5 C2 N7 C4
+ &rst iat=7,7,13,13, atnam(1)='C5', atnam(2)='C2',
+     atnam(3)='N7', atnam(4)='C4',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0, iresid=1, &end
+
+#  planaritets restraint:  C2 C8 C2 C8
+ &rst iat=7,7,13,13, atnam(1)='C2', atnam(2)='C8',
+     atnam(3)='C2', atnam(4)='C8',
+     r1=350.0, r2=355.0, r3=365.0, r4=370.0,
+      iresid=1, &end

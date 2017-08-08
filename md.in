@@ -1,0 +1,33 @@
+simulated annealing for 80 ps
+
+ &cntrl
+    nmropt=1,
+    ntpr=2500,
+    ntwx=2500,
+    nstlim=200000,
+    dt=0.0004,
+    tempi=1000.0,
+    temp0=1000.0,
+    ig=-1,
+    ntt=3,
+    gamma_ln=5,
+    ntc=2,
+    ntf=2,
+    ntb=0,
+    cut=5000,
+    igb=2,
+ /
+#
+#Simple simulated annealing algorithm:
+#
+#
+&wt type='TEMP0', istep1=0,istep2=5000, value1=300.0, value2=1000.0,  /
+&wt type='TEMP0', istep1=5001,istep2=100000, value1=1000.0, value2=1000.0,  /
+&wt type='TEMP0', istep1=100001,istep2=160000, value1=1000.0, value2=500.0,  /
+&wt type='TEMP0', istep1=160001,istep2=180000, value1=500.0, value2=100.0,  /
+&wt type='TEMP0', istep1=180001,istep2=200000, value1=100.0, value2=0.0,  /
+
+&wt type='END'  /
+
+LISTOUT=POUT
+DISANG=RST.dist

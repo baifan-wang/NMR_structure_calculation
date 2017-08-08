@@ -1,0 +1,5 @@
+# 1	GUA	CHI	30	90  #CHI torsion in 'syn'
+#2	CYT	CHI	200	280 #CHI torsion in 'anti'
+#1	GUA	EPSILON	170	290 #EPSILON torsion
+#1	GUA	PPA	140	185  #sugar puckering in 'south'
+#1	GUA	PPA	0	36  #sugar puckering in 'north'

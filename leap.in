@@ -1,0 +1,18 @@
+source leaprc.ff14SB   
+
+addAtomTypes {
+	{ "C7"  "C" "sp3" }
+	{ "CJ"  "C" "sp3" }
+        { "C1"  "C" "sp2" }
+        { "C2"  "C" "sp2" }
+}
+
+loadoff ff-nucleic-OL15.lib 
+loadamberparams ff-nucleic-OL15.frcmod
+loadamberparams frcmod.ionsjc_tip3p
+
+aaa = sequence {DG5 DG DG DG3}
+quad = loadpdb 1.pdb
+saveamberparm quad 1.top 1.crd
+savepdb aaa 1.pdb
+quit
