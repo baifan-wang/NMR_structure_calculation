@@ -1,0 +1,6 @@
+parm 1.top
+trajin *.rst
+rms2d !(@H=) rmsout 1-all_heavy.2drmsd.dat 
+rms2d :1,7-9,11-13,19-21,23-24&!(@H=) rmsout 2-G_quarts.2drmsd.dat 
+rms2d :1-9,11-21,23-24&!(@H=) rmsout 3-G_quarts+5'.2drmsd.dat
+go
