@@ -1,0 +1,20 @@
+  minimize structure
+ &cntrl
+   imin=1,
+   ntmin=2,
+   maxcyc=10000,                                                
+   cut=999,
+   igb=2, 
+   ntpr=200, 
+   ntb=0,ntc=1,ntf=1,
+   ncyc=1000,
+   nmropt=1
+/
+
+ &wt type='REST', istep1=0,istep2=100000,value1=1.0,
+            value2=1.0,     /
+ &wt type='END'  /
+
+LISTOUT=POUT
+DISANG=RST.dist
+END
