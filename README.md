@@ -1,5 +1,5 @@
 This repository provides protocol and scripts for simulated annealing simulation for NMR structure calculation using [Amber](http://ambermd.org/). If you are unfamiliar with Amber, please check the [tutorial](http://ambermd.org/tutorials/).
-## 1.1 Create initial strcuture. 
+## 1.1 Create initial structure. 
 Here the initial strucutre are created by 'leap' programm in amber. All of the necessary files are located in [1.initial_structure_and_minimization](https://github.com/baifan-wang/NMR_structure_calculation/tree/master/1.initial_structure_and_minimization). The 'leap.in' is a script containing the commands to load force field parameters, create initial structure, save files, etc. The current 'leap.in' is designed for the DNA molecule using the 'ff-nucleic-OL15' force field (see http://fch.upol.cz/ff_ol/downloads.php for detail). One can download these force field in this repository('ff-nucleic-OL15.frcmod' and 'ff-nucleic-OL15.lib') or from  http://fch.upol.cz/ff_ol/downloads.php.    
 First you need to edit 'leap.in', input the sequence of your structure in {} in this line: "aaa = sequence {DG5 DG DG DG3}".    
 Then use the following command to create amber topology and coordinate as well as pdb file:    
