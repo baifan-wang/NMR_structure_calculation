@@ -1,0 +1,5 @@
+parm 1.top
+trajin *.rst
+rms first :2-21&!(@H=) mass
+trajout final.pdb pdbv3 chainid A teradvance model
+go
