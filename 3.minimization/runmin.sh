@@ -25,7 +25,7 @@ fi
 for ((i=1; i<$1+1; i++))
 do
 rep=`printf "%03d" $i`
-pmemd.cuda -O -i md.in -o $name.$rep.min.out -c ../$name.$rep.rst -r $name.$rep.min.rst -x mdcrd -p $name.top -ref ../$name.$rep.rst
+pmemd.cuda -O -i md.in -o $name.$rep.min.out -c ../2.simulated_annealing_simulation/$name.$rep.rst -r $name.$rep.min.rst -x mdcrd -p $name.top -ref ../$name.$rep.rst
 ambpdb -p $name.top -c $name.$rep.min.rst > $name.$rep.min.pdb
 done
 
