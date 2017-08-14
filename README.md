@@ -48,6 +48,21 @@ Assuming you already have the following files:
 * tordef.lib: library file for creating torsion restraint    
 The ‘map_added.DG-AMBER’ and ‘tordef.lib’ can be found in this repositoriy, as well as examples for the ‘noe.8col’, ‘hbond.8col’, ‘torsion.5col’ and ‘planarity.dist’.    
 
+#### [makePLANAR_RST.py](https://github.com/baifan-wang/computational_chemistry_tools/blob/master/Amber/makePLANAR_RST.py): Generate the planarity restraint for the input base pair to be used in Amber NMR calculation.    
+Usage: 
+```python
+python makePLANAR_RST.py -i input_file -o output_file -res basepairs
+python makePLANAR_RST.py -i wc.txt -o wc.dist      #read base pair definitation from wc.txt and output restraint to wc.dist
+python makePLANAR_RST.py -res A 1 T 2 -o wc.dist   #read base pair definitation from input and output restraint to wc.dist
+python makePLANAR_RST.py -res A 1 T 2 -i wc.txt -o wc.dist   #read base pair definitation from both input and wc.txt output restraint to wc.dist
+python makePLANAR_RST.py -res A 1 T 2  #direct print the output 
+```
+-res: input residues type for base pair, eg: G 1 G 2 G 3    
+input_file: base pair planarity definition file, eg:    
+T 1 A 2    
+T 2 A 3    
+...
+
 ## 2.2 Perform simulated annealing simulation
 The 'md.in' is the input parameter file for running simulated annealing (SA) simulation using NMR restraints.
 The 'runmd.sh' is a script for running a batch SA simulation, asumming you have the amber topology and restart file '1.top' and '1.rst'. If you have different file name, edit the name="1"  line in ths script. You can set up, e.g., 100 SA simulation like this:
