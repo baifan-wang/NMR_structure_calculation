@@ -181,6 +181,7 @@ if __name__=='__main__':
 
     if args.result:
         results = get_results(args.directory, args.dist_cutoff, args.angle_cutoff)
+        print("md out", "max distance violation", "max torsion violation", "Energy", sep = '\t')
         for m in results:
             print(m.name, m.max_dis_viol, m.max_tor_viol, m.energy[0], sep = '\t')
     if args.statistics:
