@@ -72,8 +72,15 @@ bash runmd.sh 100
 After finished, 100 pdb files will be generated. Their energy, NMR restraint violation will be written in file ends with '.out', and statistics information will be presented in 'svionergy.txt'.
 
 ## 3. Minimization
+The simulated annealing calculation already contains the stage of cooling the structure to 0 K, which is a kind of minimization. But if you structures contain ill-defined parts (due to lack of NOEs), or you wish to do minimization using different or no restraint, you can do another minimization using the script "runmin.sh" and "min.in".
+First you need to copy the topology and restraint file into the folder of "3.minimization", and then performed:
+```bash
+./runmin.sh 100
+```
+will do 10000 steps minimization for the 100 structures.
+After finished, you can check the violation and energy of using "mdou_parser.py".
 
-## 4 Preparation of PDB file and generation of NMR statistics
+## 4. Preparation of PDB file and generation of NMR statistics
 The "4.post_processing" folder contains script to prepare pdb file and get NMR statistics. Copy the topology file and the restart files of the 10 (or more) best structures which you selected, as well as restraint files into this folder.
 ### 4.1 Generate pdb files. 
 After selecttion of 10 best structures, the script of "group_pdb.in" can put these strcutures into a single PDB file, which is the prerequisite of submission to the PDB database. Here you can copy the restart files (files end with ".rst") of the 10 best structures in this folder. Then modified the "group_pdb.in", edit the topology filename in the 1st line to your topology file, and specify the residues used to superimpose the structure by editting the line of "rms first :2-21&!(@H=) mass". Then using the command: 
