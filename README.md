@@ -76,7 +76,7 @@ The "mdout_parser.py" is a python script to extract NMR violation and energy inf
 ```python
 python3 ../mdout_parser.py -d ../2.simulated_annealing_simulation -r -dist 0.3 -ang 2.5
 ```
-will print the md out with distance violation less than 0.2 angstrom and torsion angle volation less 2.5 degree, in which the top is the structure with minimum energy:
+will print the md out with distance violation less than 0.3 angstrom and torsion angle volation less than 2.5 degree, in which the top is the structure with minimum energy:
 ```bash
 md out	max distance violation	max torsion violation	Energy
 1.176.out	0.244	2.373	-5349.663
