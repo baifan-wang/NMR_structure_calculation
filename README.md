@@ -22,7 +22,7 @@ ambpdb -p 1.top -c 1.rst >1.pdb
 
 ## 2.1 Create restraints and perform simulated annealing simulation.
 All of the files are located in [2.simulated_annealing_simulation](https://github.com/baifan-wang/NMR_structure_calculation/tree/master/2.simulated_annealing_simulation). Before proceed, copy the topology, pdb and restart files from first step into this directory.
-### Convert sparky list to amber 8col file.
+### 2.2 Convert sparky list to amber 8col file.
 The script 'sparky_to_amber.py' is used to convert sparky list into amber 8col file. Assuming you have already convert the NOE volume into distance restraint, which means you have the files with the following content:
 ```bash
 Y4HN-D3HN	2.6	5
@@ -33,7 +33,7 @@ Then the following command can be used to convert this file:
 python sparky_to_amber.py sparky.list noe.8col protein
 ```
 if your molecule is DNA, just replace 'protein' with 'DNA'
-### Make restraints
+### 2.3 Make restraints
 The NMR restraints file using in structure calculation are created by script: [make_restraint.sh]( https://github.com/baifan-wang/computational_chemistry_tools/blob/master/NMR_structure_calculation/make_restraint.sh). The restraints include NOE and hydrogen bond distance restraints as well as torsion angle restraints, planarity restraints (optional) and chirality restraints. The final restraint file created by this script is ‘RST.dist’. Usage:    
 ```bash
 bash make_restraint.sh    
@@ -63,13 +63,36 @@ T 1 A 2
 T 2 A 3    
 ...
 
-## 2.2 Perform simulated annealing simulation
+### 2.4 Perform simulated annealing simulation
 The 'md.in' is the input parameter file for running simulated annealing (SA) simulation using NMR restraints.
 The 'runmd.sh' is a script for running a batch SA simulation, asumming you have the amber topology and restart file '1.top' and '1.rst'. If you have different file name, edit the name="1"  line in ths script. You can set up, e.g., 100 SA simulation like this:
 ```bash
 bash runmd.sh 100
 ```
 After finished, 100 pdb files will be generated. Their energy, NMR restraint violation will be written in file ends with '.out', and statistics information will be presented in 'svionergy.txt'.
+
+### 2.5 Get NMR violation from SA output file.
+The "mdout_parser.py" is a python script to extract NMR violation and energy information form SA out put file. It can show the structures within a specified distance and torsion angle violation cutoff. For example, one can see which structures has distance violation less than 0.2 and torsion angle violation less than 5 degree by using the follwing command:
+```python
+python3 ../mdout_parser.py -d ../2.simulated_annealing_simulation -r -dist 0.3 -ang 2.5
+```
+will print the md out with distance violation less than 0.2 angstrom and torsion angle volation less 2.5 degree, in which the top is the structure with minimum energy:
+```bash
+md out	max distance violation	max torsion violation	Energy
+1.176.out	0.244	2.373	-5349.663
+1.200.out	0.212	2.124	-5346.602
+1.163.out	0.196	2.161	-5345.7317
+1.007.out	0.253	1.630	-5344.5039
+1.183.out	0.232	1.887	-5344.4069
+1.124.out	0.255	1.966	-5344.3604
+```
+
+The options of 
+'-d': the directory contains md output files.
+'-r': print the results.
+'-s': get statistics information. see 4th section.
+'-dist': NMR violation distance cutoff, in angstrom.
+'ang': NMR violation torsion angle cutoff, in degree.
 
 ## 3. Minimization
 The simulated annealing calculation already contains the stage of cooling the structure to 0 K, which is a kind of minimization. But if you structures contain ill-defined parts (due to lack of NOEs), or you wish to do minimization using different or no restraint, you can do another minimization using the script "runmin.sh" and "min.in".
@@ -118,9 +141,9 @@ To get the NMR statistics, we need to perform another minimization with only 1 s
 ```bash
 for name in *.rst,do sander -O -i min.in -p 1.top -c ${name} -r restart -o ${name%.rst}.out;done
 ```
-The "mdout_parser.py" can be use to extract the NMR statistics from the final 10 best structures. In the terminal, you need to go to Parent directory by "cd ..", and then use the command to get NMR statistics:
+The "mdout_parser.py" can be use to extract the NMR statistics from the final 10 best structures. ISse the command to get NMR statistics:
 ```python
-python mdout_parser.py -d 4.post_processing -s -dist 0.3 -ang 5
+python3 ../mdout_parser.py -d ../4.post_processing -s -dist 0.3 -ang 5
 ```
 Here the distance and torsion angle cutoff for the NMR violation is 0.3 angstrom and 5 degree.
 The results will be printing like this:
