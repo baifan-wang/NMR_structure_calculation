@@ -164,3 +164,12 @@ RMS deviation from ideal angles: 	2.4383
 Folding of initial extend conformation into folded G-quadruplex using NMR restraints could be challenge for beginner. Usually the initial conformation will fold into a mess under restraints. I recommend to use several SA simulations to gradually fold the structure, in each SA simulation the restraints are gradually added. For example, in the first SA simulation, only torsion and chirality as well as hydrogen bond restraints in the center of strand were added, which should result in a hairpin like structure (see the figure below). Then in the second SA simulation, the hydrogen bond restraint between the center strand and the 5’ or 3’ strand can be added, which should form triplex-like structure, and then G-quadruplex. After the initial fold of G-quadruplex was obtained, the NOE restraints can be gradually added. I suggest to add intra-residue NOE restraints first, and then check the violation and correct the wrong NOE restraints. Then repeat the calculation with the sequential NOE restraints, and with the long-range NOE restraints, and finally do the calculation to produce 100 structurs (or more if necessary).
 ![img](https://raw.githubusercontent.com/baifan-wang/NMR_structure_calculation/master/tip.jpg)
 
+
+## [g4_cation.py](https://github.com/baifan-wang/computational_chemistry_tools/blob/master/g4_cation.py): Add cation to the center of 2 G-quartets. 
+Using the average coordinates of O6 atom of guanine base as the coordinates of cations. Deafult cation is K+.
+Usage: 
+```python
+python g_cation.py xxx.pdb  residue_serial_numbers_of 1st_G-quartet 2nd_G-quaret
+```
+eg: python g_cation.py xxx.pdb 1,2,3,4  5,6,7,8  9,10,11,12    
+in which the 1,2,3,4 are the residue serial numbers in 1st G-quartet. The cations will be added to the center of G-quartet 1-2-3-4 and 5-6-7-8 as well as the center of G-quartet 5-6-7-8 and 9-10-11-12
