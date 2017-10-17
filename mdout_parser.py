@@ -91,12 +91,23 @@ def get_all_mdout_files(directory):
     return sorted([os.path.join(directory,x) for x in os.listdir(directory) \
     if os.path.isfile(os.path.join(directory,x)) and os.path.splitext(x)[1]==fe])
 
+def check_mdout(mdout):
+    f = open(mdout)
+    lines = f.readlines()
+    for line in lines:
+        if '********' in line:
+            return False
+    return True
+
 def creat_mdout_obj(directory='.'):
     all_mdout_obj = []
     for f in get_all_mdout_files(directory):
-        m = Mdout(f)
-        m.run()
-        all_mdout_obj.append(m)
+        if check_mdout(f):
+            m = Mdout(f)
+            m.run()
+            all_mdout_obj.append(m)
+        else:
+            pass
     return all_mdout_obj
 
 def filter_mdout_obj(all_mdout_obj, dis_cut_off, tor_cut_off):
